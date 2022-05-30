@@ -58,9 +58,8 @@ def check_submissions(submissions):
 				submission.comments.replace_more(limit=100)
 				for comment in submission.comments.list():
 					# Check to see if any of the comments were made by automoderator
-					if comment.author == "AutoModerator":
-                                                pdb.set_trace()
-						print(f'Removing automod comment on {submission.id}')
+					if comment.author == "AutoModerator" and comment.removed == False:
+						print(f'Removing automod comment on {submission.id} - {submission.title}')
 						comment.mod.remove()                                                
 						print('Posting mod comment reply...')
 						mod_comment = submission.reply(body=comment_reply)
