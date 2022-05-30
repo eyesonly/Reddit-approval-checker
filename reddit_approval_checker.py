@@ -61,6 +61,7 @@ def check_submissions(submissions):
 					if comment.author == "AutoModerator" and comment.removed == False:
 						print(f'Removing automod comment on {submission.id} - {submission.title}')
 						comment.mod.remove()                                                
+						if comment_reply != "":
 						print('Posting mod comment reply...')
 						mod_comment = submission.reply(body=comment_reply)
 						mod_comment.mod.distinguish(how='yes', sticky=True)  
