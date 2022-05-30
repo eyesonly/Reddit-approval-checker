@@ -60,10 +60,11 @@ def check_submissions(submissions):
 					# Check to see if any of the comments were made by automoderator
 					if comment.author == "AutoModerator" and comment.removed == False:
 						print(f'Removing automod comment on {submission.id} - {submission.title}')
-						comment.mod.remove()                                                
-						print('Posting mod comment reply...')
-						mod_comment = submission.reply(body=comment_reply)
-						mod_comment.mod.distinguish(how='yes', sticky=True)  
+ 						comment.mod.remove()                                                
+ 						if comment_reply != '':
+						        print('Posting mod comment reply...')
+						        mod_comment = submission.reply(body=comment_reply)
+						        mod_comment.mod.distinguish(how='yes', sticky=True)  
 			
 	except Exception as e:
 		print(f'\t### ERROR - Something went wrong checking submissions.\n\t{e}')
