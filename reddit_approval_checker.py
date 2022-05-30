@@ -62,9 +62,9 @@ def check_submissions(submissions):
 						print(f'Removing automod comment on {submission.id} - {submission.title}')
 						comment.mod.remove()                                                
 						if comment_reply != "":
-						print('Posting mod comment reply...')
-						mod_comment = submission.reply(body=comment_reply)
-						mod_comment.mod.distinguish(how='yes', sticky=True)  
+							print('Posting mod comment reply...')
+							mod_comment = submission.reply(body=comment_reply)
+							mod_comment.mod.distinguish(how='yes', sticky=True)  
 			
 	except Exception as e:
 		print(f'\t### ERROR - Something went wrong checking submissions.\n\t{e}')
